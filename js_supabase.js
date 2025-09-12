@@ -1,11 +1,12 @@
-// js_supabase.js - Supabase configuration
+//js&supabase.js
+const SUPABASE_URL = 'https://rnjvqxdrvplgilqzwnpl.supabase.co'; // YOUR_SUPABASE_URL
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJuanZxeGRydnBsZ2lscXp3bnBsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NDU4NjYsImV4cCI6MjA2NDUyMTg2Nn0.IOAxp8ULZgccX8hKtlDQzwdrW7xp1CcXVSdJ59UEruA'; // YOUR_SUPABASE_ANON_KEY
 
-// Replace these with your actual Supabase project details
-const SUPABASE_URL = 'https://your-project.supabase.co';
-const SUPABASE_ANON_KEY = 'your-anon-key';
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY || SUPABASE_URL.includes('YOUR_SUPABASE_URL')) {
+    alert("Application is not configured correctly. Supabase credentials missing in js/js_supabase.js");
+}
 
-// Initialize Supabase client
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = self.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Make supabase globally available
+// Expose supabase client globally
 window.supabase = supabase;
