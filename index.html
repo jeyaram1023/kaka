@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>StreetR - Food Delivery App</title>
+    <title>StreetR</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -11,7 +11,6 @@
 </head>
 <body>
     <div id="app">
-        <!-- Loading Modal -->
         <div id="loading-modal" class="modal-overlay hidden">
             <div class="loader-container">
                 <div class="spinning-circle"></div>
@@ -20,26 +19,22 @@
                 </div>
             </div>
         </div>
-
-        <!-- Notification Popups -->
         <div id="notification-popup-1" class="popup-notification hidden">
-            <button class="close-popup-btn">×</button>
+            <button class="close-popup-btn">x</button>
             <img src="assets_promo-1.png" alt="Promo 1">
         </div>
         <div id="notification-popup-2" class="popup-notification hidden">
-            <button class="close-popup-btn">×</button>
+            <button class="close-popup-btn">x</button>
             <img src="assets_promo-2.png" alt="Promo 2">
         </div>
         <div id="notification-popup-3" class="popup-notification hidden">
-            <button class="close-popup-btn">×</button>
+            <button class="close-popup-btn">x</button>
             <img src="assets_promo-3.png" alt="Promo 3">
             <div class="popup-footer">
                 <input type="checkbox" id="dont-show-again">
                 <label for="dont-show-again">Don't show this again</label>
             </div>
         </div>
-
-        <!-- More Menu Popup -->
         <div id="more-menu-popup" class="more-menu-popup hidden">
             <div class="more-menu-overlay"></div>
             <div class="more-menu-content">
@@ -50,7 +45,8 @@
                 <button id="close-more-menu-btn" class="button-outline">Close</button>
             </div>
         </div>
-
+        <div id="confetti-container"></div>
+        
         <!-- Disclaimer Modal -->
         <div id="disclaimer-modal" class="modal-overlay hidden">
             <div class="modal-content">
@@ -62,12 +58,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- Confetti Container -->
-        <div id="confetti-container"></div>
-
-        <!-- Header -->
-        <header id="app-header" class="app-header">
+        <header id="app-header" class="app-header" style="display: none;">
             <div class="header-left">
                 <h1 class="header-title">StreetR</h1>
             </div>
@@ -76,10 +67,7 @@
                 <button id="search-page-button" class="icon-button"><i class="fa-solid fa-search"></i></button>
             </div>
         </header>
-
-        <!-- Main Content -->
         <main id="page-container">
-            <!-- Login Page -->
             <div id="login-page" class="page active">
                 <div class="page-content centered-content">
                     <img src="https://uploads.onecompiler.io/42q5e2pr5/43m4t5ddk/1000130216.png" alt="App Logo" class="app-icon-large">
@@ -88,15 +76,13 @@
                     <input type="email" id="login-email" placeholder="Enter your email" autocomplete="email">
                     <div class="terms-container">
                         <input type="checkbox" id="terms-conditions">
-                        <label for="terms-conditions">I agree to the <a href="#" target="_blank">Terms & Conditions</a></label>
+                        <label for="terms-conditions">I agree to the <a href="#" target=" blank">Terms & Conditions</a></label>
                     </div>
                     <button id="login-button">Get Magic Link</button>
-                    <p>&copy; 2024 DESIGN by StreetR</p>
+                    <p>&copy; 2024 DESIGN by StreedR</p>
                     <p id="login-message" class="message"></p>
                 </div>
             </div>
-
-            <!-- Profile Setup Page -->
             <div id="profile-setup-page" class="page">
                 <div class="page-header">Personal Details</div>
                 <div class="page-content">
@@ -119,26 +105,19 @@
                     </form>
                     <p id="profile-message" class="message"></p>
                 </div>
-                <p>&copy; 2024 DESIGN by StreetR</p>
+                <p>&copy; 2024 DESIGN by StreedR</p>
             </div>
-
-            <!-- Main App View -->
             <div id="main-app-view" class="page">
-                <!-- Home Page Content -->
                 <div id="home-page-content" class="tab-content active">
                     <h3 class="popular-heading">Popular Items</h3>
                     <div id="popular-items-container" class="item-grid"></div>
                     <h3 class="main-item-heading">All Available Items</h3>
                     <div id="all-items-container" class="item-grid"></div>
                 </div>
-
-                <!-- Orders Page Content -->
                 <div id="orders-page-content" class="tab-content">
                     <h3>Your Orders</h3>
                     <div id="orders-list"></div>
                 </div>
-
-                <!-- Cart Page Content -->
                 <div id="cart-page-content" class="tab-content">
                     <h3>Your Cart</h3>
                     <div id="cart-items-container"></div>
@@ -158,25 +137,21 @@
                             </label>
                         </div>
                         
-                        <div class="bill-row"><span>Item Charge</span><span id="cart-subtotal">₹0.00</span></div>
-                        <div class="bill-row"><span>Platform Charge</span><span id="cart-platform-fee">₹5.00</span></div>
-                        <div class="bill-row hidden" id="gst-row"><span>GST (10%)</span><span id="cart-gst">₹0.00</span></div>
-                        <div class="bill-row hidden" id="delivery-row"><span>Delivery Charge</span><span id="cart-delivery-fee">₹0.00</span></div>
+                        <div class="bill-row"><span>Item Charge</span><span id="cart-subtotal"></span></div>
+                        <div class="bill-row"><span>Platform Charge</span><span id="cart-platform-fee"></span></div>
+                        <div class="bill-row hidden" id="gst-row"><span>GST (10%)</span><span id="cart-gst"></span></div>
+                        <div class="bill-row hidden" id="delivery-row"><span>Delivery Charge</span><span id="cart-delivery-fee"></span></div>
                         <div class="promo-code-container">
                             <input type="text" id="promo-code" placeholder="Enter promo code">
                             <button id="apply-promo-button">Apply</button>
                         </div>
-                        <div class="bill-row grand-total"><span>Grand Total</span><span id="cart-grand-total">₹5.00</span></div>
+                        <div class="bill-row grand-total"><span>Grand Total</span><span id="cart-grand-total"></span></div>
                         <button id="place-order-button">Place Order</button>
                     </div>
                 </div>
-
-                <!-- Map Page Content -->
                 <div id="map-page-content" class="tab-content">
                     <div id="map-container"></div>
                 </div>
-
-                <!-- Profile Page Content -->
                 <div id="profile-page-content" class="tab-content">
                     <h3>Your Profile</h3>
                     <div id="profile-details-view">
@@ -233,8 +208,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Search Page -->
             <div id="search-page" class="page">
                 <div class="page-header-with-back">
                     <button class="back-to-home-btn icon-button"><i class="fa-solid fa-arrow-left"></i></button>
@@ -265,8 +238,6 @@
                 </div>
                 <button id="qr-scanner-button" class="qr-scanner-fab"><i class="fa-solid fa-qrcode"></i></button>
             </div>
-
-            <!-- QR Scanner Page -->
             <div id="qr-scanner-page" class="page">
                 <div class="page-header-with-back">
                     <button class="back-to-home-btn icon-button"><i class="fa-solid fa-arrow-left"></i></button>
@@ -275,8 +246,6 @@
                 <div id="qr-reader"></div>
                 <button id="close-scanner-button">Close Scanner</button>
             </div>
-
-            <!-- Likes Page -->
             <div id="likes-page" class="page">
                 <div class="page-header-with-back">
                     <button class="back-to-home-btn icon-button"><i class="fa-solid fa-arrow-left"></i></button>
@@ -288,14 +257,9 @@
                     <p>You haven't liked any items yet.</p>
                 </div>
             </div>
-
-            <!-- Item Detail Page -->
             <div id="item-detail-page" class="page"></div>
-
-            <!-- Shop Profile Page -->
             <div id="shop-profile-page" class="page"></div>
             
-            <!-- Payment Page -->
             <div id="payment-page" class="page">
                 <div class="page-header-with-back">
                     <button class="back-to-home-btn icon-button"><i class="fa-solid fa-arrow-left"></i></button>
@@ -314,17 +278,14 @@
                     <p id="payment-message" class="message"></p>
                     <button id="back-to-cart-button" class="button-outline">Back to Cart</button>
                 </div>
-                <p>&copy; 2024 DESIGN by StreetR</p>
+                <p>&copy; 2024 DESIGN by StreedR</p>
             </div>
-        </main>
-
-        <!-- Footer -->
-        <footer id="page-footer">
-            <div id="cart-footer" class="hidden"></div>
+            </main>
+        <footer id="page-footer" style="display: none;">
+            <div id="cart-footer" class="hidden">
+            </div>
         </footer>
-
-        <!-- Bottom Navigation -->
-        <nav id="bottom-nav" class="bottom-nav">
+        <nav id="bottom-nav" class="bottom-nav" style="display: none;">
             <button data-page="home-page-content" class="nav-item active">
                 <i class="fa-solid fa-house"></i><span>Home</span>
             </button>
@@ -345,8 +306,6 @@
             </button>
         </nav>
     </div>
-
-    <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
     <script src="js_supabase.js"></script>
