@@ -1,5 +1,11 @@
 // js_main.js - Main application controller
 
+// Ensure Supabase is available
+if (typeof supabase === 'undefined') {
+    console.error('Supabase not loaded. Please check your internet connection and try again.');
+    // You can add a fallback UI here if needed
+}
+
 // Global state variables
 window.currentUser = null;
 window.userProfile = null;
