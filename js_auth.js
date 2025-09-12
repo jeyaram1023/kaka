@@ -1,4 +1,4 @@
-// js_auth.js - Authentication functionality
+// js_auth.js
 
 const loginEmailInput = document.getElementById('login-email');
 const loginButton = document.getElementById('login-button');
@@ -28,7 +28,7 @@ async function handleLogin() {
         const { error } = await supabase.auth.signInWithOtp({
             email: email,
             options: {
-                emailRedirectTo: window.location.origin,
+                emailRedirectTo: "https://jeyaram1023.github.io/StreetR-customer-app-/",
             },
         });
         if (error) throw error;
@@ -50,10 +50,10 @@ async function handleLogout() {
         console.error('Logout error:', error);
         alert('Error logging out: ' + error.message);
     }
+    // The onAuthStateChange listener in js_main.js will handle the navigation.
     hideLoader();
 }
 
-// Event listeners
 if (loginButton) {
     loginButton.addEventListener('click', handleLogin);
 }
